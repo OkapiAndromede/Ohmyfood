@@ -4,19 +4,21 @@
   border-radius: 15px;
   box-shadow: 0px 4px 15px 0px #0000001a;
 }
+/****** Box shadow***********/
 @mixin shadow-nav {
   box-shadow: 0px 2px 4px 0px #00000026;
 }
 @mixin shadow-localisation {
   box-shadow: 0px 4px 4px 0px #00000040;
 }
-
+/****** Button***********/
 @mixin button($width) {
-  background: linear-gradient(to top, $main-color, $secondary-color);
   width: $width;
   padding: 1rem 0;
   border: none;
   border-radius: 25px;
+  box-shadow: 0px 4px 10px 0px #00000040;
+  cursor: pointer;
 }
 @mixin news {
   background-color: $tertiary-color;
@@ -25,7 +27,7 @@
   border-radius: 2px;
   padding: 0.5rem 0.625rem;
 }
-
+/****** Assets***********/
 @mixin circle($color) {
   background-color: $color;
   color: white;
@@ -36,3 +38,11 @@
   justify-content: center;
   align-items: center;
 }
+@mixin spinner($color) {
+  width: 75px;
+  height: 75px;
+  border: 15px solid white;
+  border-top-color: $color;
+  border-radius: 50%;
+}
+/****** Media queries***********/

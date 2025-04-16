@@ -2,6 +2,32 @@
 /****** Nuances de gris ***********/
 /****** Typographie ***********/
 /****** Cards ***********/
+/****** Box shadow***********/
+/****** Button***********/
+/****** Assets***********/
+/****** Media queries***********/
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  90% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 /****** General ***********/
 * {
   font-family: "Roboto", sans-serif;
@@ -18,6 +44,30 @@ a {
 
 .restaurant__card--img {
   object-fit: cover;
+}
+
+/****** loader ***********/
+.loader {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeout 4s forwards;
+}
+.loader::after {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border: 15px solid white;
+  border-top-color: #9356dc;
+  border-radius: 50%;
+  animation: loading 1.2s ease-in-out 0s 3, fadeout 4s forwards;
 }
 
 /****** header ***********/
@@ -86,14 +136,39 @@ a {
   width: 80%;
 }
 .hero-banner__cta {
-  background: linear-gradient(to top, #9356dc, #ff79da);
   width: 218px;
   padding: 1rem 0;
   border: none;
   border-radius: 25px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2509803922);
+  cursor: pointer;
+  background: linear-gradient(to top, #9356dc, #ff79da);
   color: white;
   font-size: 1rem;
   margin-bottom: 6.562rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-banner__cta:hover::after {
+  opacity: 1;
+}
+.hero-banner__cta::after {
+  content: "";
+  width: 218px;
+  padding: 1rem 0;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2509803922);
+  cursor: pointer;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top, rgb(152.4, 94.45, 221.75), rgb(255, 131.2, 220.8164179104));
+  opacity: 0;
+  transition: opacity 200ms;
 }
 
 /****** Introduction ***********/
@@ -182,7 +257,15 @@ a {
   margin-bottom: 0.75rem;
 }
 .restaurant .restaurant__card--favourite {
+  background: linear-gradient(to top, #9356dc, #ff79da);
+  background-clip: text;
   font-size: 1.4rem;
+  font-variation-settings: "FILL" 0;
+  transition: all 200ms ease-in-out;
+}
+.restaurant .restaurant__card--favourite:hover {
+  font-variation-settings: "FILL" 1;
+  color: transparent;
 }
 .restaurant .restaurant__card--news {
   background-color: #99e2d0;
@@ -197,6 +280,9 @@ a {
   color: rgb(44.3854961832, 156.1145038168, 128.5648854962);
   font-size: 0.875rem;
   font-weight: 700;
+}
+.restaurant .hidden {
+  display: none;
 }
 
 /****** Footer ***********/

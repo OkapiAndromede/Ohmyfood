@@ -1,5 +1,6 @@
 @import "variables.scss";
 @import "mixins.scss";
+@import "keyframes.scss";
 /****** General ***********/
 * {
   font-family: "Roboto", sans-serif;
@@ -15,6 +16,25 @@ a {
 
 .restaurant__card--img {
   object-fit: cover;
+}
+/****** loader ***********/
+.loader {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $main-grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeout 4s forwards;
+  &::after {
+    content: "";
+    @include spinner($main-color);
+    animation: loading 1.2s ease-in-out 0s 3, fadeout 4s forwards;
+  }
 }
 
 /****** header ***********/
@@ -81,9 +101,34 @@ a {
   }
   &__cta {
     @include button(218px);
+    background: linear-gradient(to top, $main-color, $secondary-color);
     color: white;
     font-size: 1rem;
     margin-bottom: 6.562rem;
+    position: relative;
+    z-index: 1;
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+    &::after {
+      content: "";
+      @include button(218px);
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(
+        to top,
+        lighten($main-color, 2%),
+        lighten($secondary-color, 2%)
+      );
+      opacity: 0;
+      transition: opacity 200ms;
+    }
   }
 }
 /****** Introduction ***********/
@@ -161,7 +206,15 @@ a {
       margin-bottom: 0.75rem;
     }
     &--favourite {
+      background: linear-gradient(to top, $main-color, $secondary-color);
+      background-clip: text;
       font-size: 1.4rem;
+      font-variation-settings: "FILL" 0;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        font-variation-settings: "FILL" 1;
+        color: transparent;
+      }
     }
     &--news {
       @include news;
@@ -174,7 +227,11 @@ a {
       font-weight: 700;
     }
   }
+  .hidden {
+    display: none;
+  }
 }
+
 /****** Footer ***********/
 footer {
   background-color: $secondary-grey;
