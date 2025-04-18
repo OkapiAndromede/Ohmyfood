@@ -1,0 +1,125 @@
+@import "initialisation.scss";
+@import "variables.scss";
+@import "mixins.scss";
+@import "keyframes.scss";
+/****** header ***********/
+.navbar-restaurant {
+  padding-left: 20px;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__logo {
+    width: 197px;
+    height: 36px;
+    margin-top: 14px;
+    margin-bottom: 12px;
+  }
+  .fa-solid {
+    font-size: larger;
+  }
+}
+/****** header ***********/
+main {
+  background-color: $quertiary-grey;
+}
+/****** Image principale***********/
+.restaurant-picture {
+  width: 100vw;
+  height: 275px;
+}
+/****** Restaurant-page***********/
+.restaurant-page {
+  background-color: $quertiary-grey;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  position: relative;
+  top: -55px;
+  &__introduction {
+    padding: 2rem 2.56rem 0 1.06rem;
+    margin-bottom: 2.625rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--title {
+      font-family: "Shrikhand";
+      font-size: 1.75rem;
+      font-weight: 400;
+    }
+  }
+  &__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    &--button {
+      @include button(218px);
+      background: linear-gradient(to top, $main-color, $secondary-color);
+      color: white;
+      font-size: 1rem;
+      position: relative;
+      z-index: 1;
+      &:hover {
+        &::after {
+          opacity: 1;
+        }
+      }
+      &::after {
+        content: "";
+        @include button(218px);
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(
+          to top,
+          lighten($main-color, 2%),
+          lighten($secondary-color, 2%)
+        );
+        opacity: 0;
+        transition: opacity 200ms;
+      }
+    }
+  }
+}
+.menu {
+  padding: 0 0.812rem;
+  &__title {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+  }
+  &__underline {
+    background-color: $tertiary-color;
+    width: 40px;
+    height: 3px;
+    margin-bottom: 0.75rem;
+  }
+  &__list {
+    &--item {
+      @include cards;
+      padding: 0.843rem 0.937rem;
+      margin-bottom: 0.75rem;
+    }
+    &--meal {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 0.312rem;
+    }
+    &--content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &--txt {
+      font-size: 0.937rem;
+      font-weight: 300;
+    }
+    &--price {
+      font-size: 0.937rem;
+      font-weight: 700;
+      color: $secondary-grey;
+    }
+  }
+}

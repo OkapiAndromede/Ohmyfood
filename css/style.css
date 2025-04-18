@@ -1,3 +1,20 @@
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.restaurant__card--img {
+  object-fit: cover;
+}
+
 /****** Couleurs principales ***********/
 /****** Nuances de gris ***********/
 /****** Typographie ***********/
@@ -28,24 +45,31 @@
     visibility: hidden;
   }
 }
-/****** General ***********/
-* {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
+/****** header ***********/
+.navbar-restaurant {
+  padding-left: 20px;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-restaurant__logo {
+  width: 197px;
+  height: 36px;
+  margin-top: 14px;
+  margin-bottom: 12px;
+}
+.navbar-restaurant .fa-solid {
+  font-size: larger;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/****** Image principale***********/
+.restaurant-picture {
+  width: 100vw;
+  height: 275px;
 }
 
-.restaurant__card--img {
-  object-fit: cover;
-}
-
+/****** Restaurant-page***********/
 /****** loader ***********/
 .loader {
   position: fixed;
@@ -58,16 +82,29 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeout 4s forwards;
+  animation: fadeout 3s forwards;
 }
-.loader::after {
-  content: "";
-  width: 75px;
-  height: 75px;
-  border: 15px solid white;
-  border-top-color: #9356dc;
-  border-radius: 50%;
+.loader__txt {
+  font-family: "Shrikhand";
+  font-size: 3rem;
+  background: linear-gradient(to top, #9356dc, #ff79da);
+  background-clip: text;
+  color: transparent;
+  width: 0;
+  overflow: hidden;
+  animation: type-me 2.5s ease-in-out 0s forwards;
+  /*
+  @include spinner($main-color);
   animation: loading 1.2s ease-in-out 0s 3, fadeout 4s forwards;
+  */
+}
+@keyframes type-me {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 5.75em;
+  }
 }
 
 /****** header ***********/
@@ -90,7 +127,10 @@ a {
   justify-content: center;
   align-items: center;
   padding: 0.968rem 0;
+  position: relative;
+  /*
   margin-bottom: 2.47rem;
+  */
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
 }
 .localisation .fa-solid {
@@ -122,6 +162,9 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 2.47rem;
+  margin-bottom: 3rem;
+  background-color: #f6f6f6;
 }
 .hero-banner__title {
   font-size: 1.5rem;
@@ -129,11 +172,22 @@ a {
   margin-bottom: 1rem;
   width: 60%;
 }
+@media (min-width: 768px) {
+  .hero-banner__title {
+    font-size: 2.5rem;
+    margin-bottom: 1.125rem;
+  }
+}
 .hero-banner__txt {
   font-size: 1.125rem;
   text-align: center;
   margin-bottom: 1.687rem;
   width: 80%;
+}
+@media (min-width: 1024px) {
+  .hero-banner__txt {
+    margin-bottom: 1.125rem;
+  }
 }
 .hero-banner__cta {
   width: 218px;
@@ -170,10 +224,26 @@ a {
   opacity: 0;
   transition: opacity 200ms;
 }
+@media (min-width: 1024px) {
+  .hero-banner__cta {
+    margin-bottom: 1.875rem;
+  }
+}
 
 /****** Introduction ***********/
 .introduction {
   padding: 0 20px;
+}
+@media (768px <= width <= 1024px) {
+  .introduction {
+    padding-left: 30px;
+  }
+}
+@media (min-width: 1024px) {
+  .introduction {
+    padding-left: 180px;
+    width: 90%;
+  }
 }
 .introduction__title {
   font-size: 1.5rem;
@@ -181,6 +251,14 @@ a {
 }
 .introduction__list {
   margin-bottom: 4.25rem;
+}
+@media (min-width: 768px) {
+  .introduction__list {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 3.125rem;
+  }
 }
 .introduction__list--item {
   display: flex;
@@ -190,6 +268,7 @@ a {
   background-color: white;
   border-radius: 15px;
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1019607843);
+  background-color: #f6f6f6;
   padding: 1.787rem 0;
   margin-left: 0.781rem;
   margin-bottom: 1.56rem;
@@ -197,6 +276,19 @@ a {
 }
 .introduction__list--item .fa-solid {
   color: #7e7e7e;
+}
+@media (768px <= width <= 1024px) {
+  .introduction__list--item {
+    gap: 0.5rem;
+    padding: 1rem 0.5rem 1rem 1.75rem;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1024px) {
+  .introduction__list--item {
+    width: 32%;
+    margin-left: 0;
+  }
 }
 .introduction__list--item:last-of-type .fa-solid {
   color: #9356dc;
@@ -220,9 +312,44 @@ a {
   background-color: #eaeaea;
   padding-bottom: 4.125rem;
 }
+@media (min-width: 1024px) {
+  .restaurant {
+    padding-bottom: 1.875rem;
+  }
+}
 .restaurant .restaurant__title,
 .restaurant .restaurant__list {
   padding: 0 20px;
+}
+@media (768px <= width <= 1024px) {
+  .restaurant .restaurant__title,
+  .restaurant .restaurant__list {
+    padding: 0 30px;
+  }
+}
+@media (min-width: 1024px) {
+  .restaurant .restaurant__title,
+  .restaurant .restaurant__list {
+    padding: 0 180px;
+  }
+}
+@media (min-width: 768px) {
+  .restaurant .restaurant__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+  }
+}
+@media (min-width: 1024px) {
+  .restaurant .restaurant__list {
+    gap: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .restaurant a {
+    width: 42%;
+  }
 }
 .restaurant .restaurant__title {
   font-size: 1.5rem;
@@ -291,17 +418,56 @@ footer {
   color: white;
   padding: 0 1.56rem;
 }
+@media (min-width: 768px) {
+  footer {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 1.937rem;
+    padding-top: 4rem;
+    padding-right: 2rem;
+  }
+}
 
 .footer-title {
   font-family: "Shrikhand";
   font-size: 1.125rem;
   font-weight: 300;
-  padding-top: 1.375rem;
+  padding-top: 1rem;
   margin-bottom: 1rem;
+}
+@media (768px <= width <= 1024px) {
+  .footer-title {
+    margin-bottom: 0;
+    margin-left: 0.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-title {
+    margin-bottom: 0;
+    margin-left: 1.5rem;
+  }
 }
 
 .footer-information {
   padding-bottom: 1.375rem;
+}
+@media (768px <= width <= 1024px) {
+  .footer-information {
+    padding-bottom: 0;
+    padding-top: 1.375rem;
+    display: flex;
+    column-gap: 8px;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-information {
+    padding-bottom: 0;
+    padding-top: 1.375rem;
+    display: flex;
+    column-gap: 24px;
+  }
 }
 
 .footer-information__item {
