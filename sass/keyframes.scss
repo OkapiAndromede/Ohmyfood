@@ -21,3 +21,22 @@
     visibility: hidden;
   }
 }
+
+@keyframes type-me {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 5.75em;
+  }
+}
+@keyframes choice {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 70px;
+    opacity: 1;
+  }
+}

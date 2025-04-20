@@ -4,16 +4,12 @@
 @import "keyframes.scss";
 /****** header ***********/
 .navbar-restaurant {
+  width: 100vw;
   padding-left: 20px;
-  width: 75%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   &__logo {
     width: 197px;
     height: 36px;
-    margin-top: 14px;
-    margin-bottom: 12px;
+    margin: 14px auto;
   }
   .fa-solid {
     font-size: larger;
@@ -21,12 +17,21 @@
 }
 /****** header ***********/
 main {
-  background-color: $quertiary-grey;
+  background-color: white;
+  @media (min-width: 1024px) {
+    background-color: initial;
+  }
 }
 /****** Image principale***********/
+
 .restaurant-picture {
   width: 100vw;
   height: 275px;
+  object-fit: cover;
+  margin-bottom: -55px;
+  @media (min-width: 1024px) {
+    height: 383px;
+  }
 }
 /****** Restaurant-page***********/
 .restaurant-page {
@@ -34,23 +39,44 @@ main {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   position: relative;
-  top: -55px;
+  z-index: 1;
+  @media (min-width: 1024px) {
+    width: 70vw;
+    margin: 0 auto;
+  }
   &__introduction {
     padding: 2rem 2.56rem 0 1.06rem;
     margin-bottom: 2.625rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (min-width: 768px) {
+      justify-content: center;
+      gap: 1.5rem;
+    }
     &--title {
       font-family: "Shrikhand";
       font-size: 1.75rem;
       font-weight: 400;
     }
+    .material-symbols-outlined {
+      cursor: pointer;
+      background: linear-gradient(to top, $main-color, $secondary-color);
+      background-clip: text;
+      font-size: 1.75rem;
+      font-variation-settings: "FILL" 0;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        font-variation-settings: "FILL" 1;
+        color: transparent;
+      }
+    }
   }
   &__cta {
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    padding-top: 1.75rem;
+    padding-bottom: 2.5rem;
     &--button {
       @include button(218px);
       background: linear-gradient(to top, $main-color, $secondary-color);
@@ -85,6 +111,10 @@ main {
 }
 .menu {
   padding: 0 0.812rem;
+  @media (min-width: 1024px) {
+    width: 60%;
+    margin: 0 auto;
+  }
   &__title {
     font-size: 1rem;
     font-weight: 300;
@@ -99,15 +129,53 @@ main {
   &__list {
     &--item {
       @include cards;
-      padding: 0.843rem 0.937rem;
+      height: 4.312rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 0.75rem;
+    }
+    &--content {
+      padding: 0.843rem 0.937rem;
+      flex: auto;
+      min-width: 0;
+      &:hover + .menu__list--choice {
+        width: 70px;
+      }
+    }
+    &--choice {
+      background-color: $tertiary-color;
+      height: 4.312rem;
+      width: 0px;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: width 500ms ease-in-out;
+
+      & .fa-solid {
+        background-color: white;
+        color: $tertiary-color;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
     &--meal {
       font-size: 1.125rem;
       font-weight: 500;
       margin-bottom: 0.312rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      min-width: 0;
     }
-    &--content {
+    &--details {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -115,6 +183,10 @@ main {
     &--txt {
       font-size: 0.937rem;
       font-weight: 300;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      min-width: 0;
     }
     &--price {
       font-size: 0.937rem;

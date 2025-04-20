@@ -45,19 +45,33 @@ a {
     visibility: hidden;
   }
 }
+@keyframes type-me {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 5.75em;
+  }
+}
+@keyframes choice {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 70px;
+    opacity: 1;
+  }
+}
 /****** header ***********/
 .navbar-restaurant {
+  width: 100vw;
   padding-left: 20px;
-  width: 75%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .navbar-restaurant__logo {
   width: 197px;
   height: 36px;
-  margin-top: 14px;
-  margin-bottom: 12px;
+  margin: 14px auto;
 }
 .navbar-restaurant .fa-solid {
   font-size: larger;
@@ -65,13 +79,25 @@ a {
 
 /****** header ***********/
 main {
-  background-color: #f6f6f6;
+  background-color: white;
+}
+@media (min-width: 1024px) {
+  main {
+    background-color: initial;
+  }
 }
 
 /****** Image principale***********/
 .restaurant-picture {
   width: 100vw;
   height: 275px;
+  object-fit: cover;
+  margin-bottom: -55px;
+}
+@media (min-width: 1024px) {
+  .restaurant-picture {
+    height: 383px;
+  }
 }
 
 /****** Restaurant-page***********/
@@ -80,7 +106,13 @@ main {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   position: relative;
-  top: -55px;
+  z-index: 1;
+}
+@media (min-width: 1024px) {
+  .restaurant-page {
+    width: 70vw;
+    margin: 0 auto;
+  }
 }
 .restaurant-page__introduction {
   padding: 2rem 2.56rem 0 1.06rem;
@@ -89,15 +121,34 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+@media (min-width: 768px) {
+  .restaurant-page__introduction {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+}
 .restaurant-page__introduction--title {
   font-family: "Shrikhand";
   font-size: 1.75rem;
   font-weight: 400;
 }
+.restaurant-page__introduction .material-symbols-outlined {
+  cursor: pointer;
+  background: linear-gradient(to top, #9356dc, #ff79da);
+  background-clip: text;
+  font-size: 1.75rem;
+  font-variation-settings: "FILL" 0;
+  transition: all 200ms ease-in-out;
+}
+.restaurant-page__introduction .material-symbols-outlined:hover {
+  font-variation-settings: "FILL" 1;
+  color: transparent;
+}
 .restaurant-page__cta {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  padding-top: 1.75rem;
+  padding-bottom: 2.5rem;
 }
 .restaurant-page__cta--button {
   width: 218px;
@@ -137,6 +188,12 @@ main {
 .menu {
   padding: 0 0.812rem;
 }
+@media (min-width: 1024px) {
+  .menu {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
 .menu__title {
   font-size: 1rem;
   font-weight: 300;
@@ -152,15 +209,52 @@ main {
   background-color: white;
   border-radius: 15px;
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1019607843);
-  padding: 0.843rem 0.937rem;
+  height: 4.312rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 0.75rem;
+}
+.menu__list--content {
+  padding: 0.843rem 0.937rem;
+  flex: auto;
+  min-width: 0;
+}
+.menu__list--content:hover + .menu__list--choice {
+  width: 70px;
+}
+.menu__list--choice {
+  background-color: #99e2d0;
+  height: 4.312rem;
+  width: 0px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: width 500ms ease-in-out;
+}
+.menu__list--choice .fa-solid {
+  background-color: white;
+  color: #99e2d0;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .menu__list--meal {
   font-size: 1.125rem;
   font-weight: 500;
   margin-bottom: 0.312rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: 0;
 }
-.menu__list--content {
+.menu__list--details {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -168,6 +262,10 @@ main {
 .menu__list--txt {
   font-size: 0.937rem;
   font-weight: 300;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: 0;
 }
 .menu__list--price {
   font-size: 0.937rem;
