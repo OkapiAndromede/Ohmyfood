@@ -25,19 +25,7 @@
     color: transparent;
     width: 0;
     overflow: hidden;
-    animation: type-me 2.5s ease-in-out 0s forwards;
-    /*
-    @include spinner($main-color);
-    animation: loading 1.2s ease-in-out 0s 3, fadeout 4s forwards;
-    */
-  }
-  @keyframes type-me {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 5.75em;
-    }
+    animation: loading 2.5s ease-in-out 0s forwards;
   }
 }
 
@@ -46,7 +34,11 @@
   display: flex;
   justify-content: center;
   position: relative;
+  z-index: 1;
   @include shadow-nav;
+  @media (min-width: 768px) {
+    box-shadow: none;
+  }
   .navbar__logo {
     width: 197px;
     height: 36px;
@@ -61,10 +53,10 @@
   align-items: center;
   padding: 0.968rem 0;
   position: relative;
-  /*
-  margin-bottom: 2.47rem;
-  */
   @include shadow-localisation;
+  @media (min-width: 768px) {
+    box-shadow: none;
+  }
   .fa-solid {
     color: $secondary-grey;
     margin-right: 17px;
@@ -101,8 +93,9 @@
     font-size: $h1-size;
     text-align: center;
     margin-bottom: 1rem;
-    width: 60%;
+    width: 65%;
     @media (min-width: 768px) {
+      width: 100%;
       font-size: $h1-size--desktop;
       margin-bottom: 1.125rem;
     }
@@ -111,8 +104,9 @@
     font-size: 1.125rem;
     text-align: center;
     margin-bottom: 1.687rem;
-    width: 80%;
+    width: 90%;
     @media (min-width: 1024px) {
+      width: 100%;
       margin-bottom: 1.125rem;
     }
   }
@@ -140,11 +134,11 @@
       left: 0;
       background: linear-gradient(
         to top,
-        lighten($main-color, 2%),
-        lighten($secondary-color, 2%)
+        lighten($main-color, 4%),
+        lighten($secondary-color, 4%)
       );
       opacity: 0;
-      transition: opacity 200ms;
+      transition: opacity 350ms;
     }
     @media (min-width: 1024px) {
       margin-bottom: 1.875rem;
@@ -238,10 +232,10 @@
     @media (min-width: 1024px) {
       gap: 100px;
     }
-  }
-  & a {
-    @media (min-width: 768px) {
-      width: 42%;
+    &--size {
+      @media (min-width: 768px) {
+        width: 42%;
+      }
     }
   }
 
@@ -275,9 +269,9 @@
       margin-bottom: 0.75rem;
     }
     &--favourite {
-      background: linear-gradient(to top, $main-color, $secondary-color);
+      background: linear-gradient(193.33deg, #9356dc -11.44%, #ff79da 90%);
       background-clip: text;
-      font-size: 1.4rem;
+      font-size: 36px;
       font-variation-settings: "FILL" 0;
       transition: all 200ms ease-in-out;
       &:hover {
@@ -288,9 +282,11 @@
     &--news {
       @include news;
       position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       top: 15px;
       right: 15px;
-      text-align: center;
       color: darken($tertiary-color, 35%);
       font-size: 0.875rem;
       font-weight: 700;

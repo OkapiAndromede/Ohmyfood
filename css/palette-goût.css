@@ -23,14 +23,6 @@ a {
 /****** Button***********/
 /****** Assets***********/
 /****** Media queries***********/
-@keyframes loading {
-  from {
-    transform: rotate(0turn);
-  }
-  to {
-    transform: rotate(1turn);
-  }
-}
 @keyframes fadeout {
   0% {
     opacity: 1;
@@ -45,7 +37,7 @@ a {
     visibility: hidden;
   }
 }
-@keyframes type-me {
+@keyframes loading {
   0% {
     width: 0;
   }
@@ -66,25 +58,20 @@ a {
 /****** header ***********/
 .navbar-restaurant {
   width: 100vw;
-  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 .navbar-restaurant__logo {
   width: 197px;
   height: 36px;
-  margin: 14px auto;
+  margin: 14px 0;
 }
 .navbar-restaurant .fa-solid {
   font-size: larger;
-}
-
-/****** header ***********/
-main {
-  background-color: white;
-}
-@media (min-width: 1024px) {
-  main {
-    background-color: initial;
-  }
+  position: absolute;
+  left: 20px;
+  top: 25px;
 }
 
 /****** Image principale***********/
@@ -134,7 +121,7 @@ main {
 }
 .restaurant-page__introduction .material-symbols-outlined {
   cursor: pointer;
-  background: linear-gradient(to top, #9356dc, #ff79da);
+  background: linear-gradient(193.33deg, #9356dc -11.44%, #ff79da 123.93%);
   background-clip: text;
   font-size: 1.75rem;
   font-variation-settings: "FILL" 0;
@@ -187,11 +174,12 @@ main {
 
 .menu {
   padding: 0 0.812rem;
+  margin-bottom: 2.5rem;
 }
 @media (min-width: 1024px) {
   .menu {
     width: 60%;
-    margin: 0 auto;
+    margin: 0 auto 2.5rem auto;
   }
 }
 .menu__title {

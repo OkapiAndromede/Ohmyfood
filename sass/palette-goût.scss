@@ -5,21 +5,19 @@
 /****** header ***********/
 .navbar-restaurant {
   width: 100vw;
-  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  position: relative;
   &__logo {
     width: 197px;
     height: 36px;
-    margin: 14px auto;
+    margin: 14px 0;
   }
   .fa-solid {
     font-size: larger;
-  }
-}
-/****** header ***********/
-main {
-  background-color: white;
-  @media (min-width: 1024px) {
-    background-color: initial;
+    position: absolute;
+    left: 20px;
+    top: 25px;
   }
 }
 /****** Image principale***********/
@@ -61,7 +59,7 @@ main {
     }
     .material-symbols-outlined {
       cursor: pointer;
-      background: linear-gradient(to top, $main-color, $secondary-color);
+      background: linear-gradient(193.33deg, #9356dc -11.44%, #ff79da 123.93%);
       background-clip: text;
       font-size: 1.75rem;
       font-variation-settings: "FILL" 0;
@@ -111,9 +109,10 @@ main {
 }
 .menu {
   padding: 0 0.812rem;
+  margin-bottom: 2.5rem;
   @media (min-width: 1024px) {
     width: 60%;
-    margin: 0 auto;
+    margin: 0 auto 2.5rem auto;
   }
   &__title {
     font-size: 1rem;
