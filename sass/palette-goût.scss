@@ -59,7 +59,11 @@
     }
     .material-symbols-outlined {
       cursor: pointer;
-      background: linear-gradient(193.33deg, #9356dc -11.44%, #ff79da 123.93%);
+      background: linear-gradient(
+        193.33deg,
+        $main-color -11.44%,
+        $secondary-color 123.93%
+      );
       background-clip: text;
       font-size: 1.75rem;
       font-variation-settings: "FILL" 0;

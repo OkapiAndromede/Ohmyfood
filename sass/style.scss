@@ -2,7 +2,6 @@
 @import "variables.scss";
 @import "mixins.scss";
 @import "keyframes.scss";
-@import "palette-goût.scss";
 /****** loader ***********/
 .loader {
   position: fixed;
@@ -226,15 +225,18 @@
     @media (min-width: 768px) {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 50px;
+      justify-content: space-between;
+      row-gap: 50px;
     }
     @media (min-width: 1024px) {
       gap: 100px;
     }
     &--size {
-      @media (min-width: 768px) {
+      @media (768px <= width <= 1024px) {
         width: 42%;
+      }
+      @media (min-width: 1025px) {
+        width: 45%;
       }
     }
   }
@@ -269,7 +271,11 @@
       margin-bottom: 0.75rem;
     }
     &--favourite {
-      background: linear-gradient(193.33deg, #9356dc -11.44%, #ff79da 90%);
+      background: linear-gradient(
+        193.33deg,
+        $main-color -11.44%,
+        $secondary-color 90%
+      );
       background-clip: text;
       font-size: 36px;
       font-variation-settings: "FILL" 0;
